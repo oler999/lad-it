@@ -1,0 +1,15 @@
+services:
+  session-tracker:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: session-tracker
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+    volumes:
+      - ./server/data:/app/server/data
+    restart: unless-stopped
